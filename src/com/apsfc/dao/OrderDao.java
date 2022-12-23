@@ -18,19 +18,19 @@ public class OrderDao {
 	private int totalpage = 0;
 	private int currentpage = 0;
 
-	/* ×ÜÒ³Êý */
+	/* ï¿½ï¿½Ò³ï¿½ï¿½ */
 	public int getTotalpage() {
 		return totalpage;
 	}
 
-	/* µ±Ç°Ò³ */
+	/* ï¿½ï¿½Ç°Ò³ */
 	public int getCurrentpage() {
 		return currentpage;
 	}
 
-	/* ·ÖÒ³ÏÔÊ¾¶©µ¥ÐÅÏ¢ */
-	/* pageÎªÇëÇóµÄÒ³Âð */
-	/* sizeÃ¿Ò³ÏÔÊ¾ÌõÄ¿Êý */
+	/* ï¿½ï¿½Ò³ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ */
+	/* pageÎªï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ */
+	/* sizeÃ¿Ò³ï¿½ï¿½Ê¾ï¿½ï¿½Ä¿ï¿½ï¿½ */
 	public List<Order> pageList(int page, int size) {
 		List<Order> orderlist = new ArrayList<Order>();
 		String sql = "SELECT COUNT(*) FROM orders";
@@ -43,7 +43,7 @@ public class OrderDao {
 				totalcount = rs.getInt(1);
 			}
 			if (totalcount != 0) {
-				/* ÉèÖÃ×ÜÒ³Êý */
+				/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ */
 			//	totalpage = totalcount / size + 1;
 				if (totalcount % size == 0) {
 					totalpage = totalcount / size;
@@ -93,7 +93,7 @@ public class OrderDao {
 		return orderlist;
 	}
 
-	/* °´¶©¹ºÈÕÆÚ²éÑ¯ */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½Ñ¯ */
 	public List<Order> getOrderByDate(String date) {
 		List<Order> orderlist = new ArrayList<Order>();
 		conn = DBConn.getConn();
@@ -126,7 +126,7 @@ public class OrderDao {
 		return orderlist;
 	}
 
-	/* °´²ËÆ·Ãû³Æ²éÑ¯ */
+	/* ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½Æ²ï¿½Ñ¯ */
 	public List<Order> getOrderByMenuname(String menuname) {
 		List<Order> orderlist = new ArrayList<Order>();
 		conn = DBConn.getConn();
@@ -159,7 +159,7 @@ public class OrderDao {
 		return orderlist;
 	}
 
-	/* °´ÓÃ»§ID²éÑ¯ */
+	/* ï¿½ï¿½ï¿½Ã»ï¿½IDï¿½ï¿½Ñ¯ */
 	public List<Order> getOrderByUserid(int userid) {
 		List<Order> orderlist = new ArrayList<Order>();
 		conn = DBConn.getConn();
@@ -193,7 +193,7 @@ public class OrderDao {
 	}
 
 	/*
-	 * ÐÞ¸Ä¶©µ¥×´Ì¬ delivery=1,¶©µ¥ÒÑÅÉËÍ£» delivery=0,¶©µ¥Î´ÅÉËÍ£»
+	 * ï¿½Þ¸Ä¶ï¿½ï¿½ï¿½×´Ì¬ delivery=1,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ delivery=0,ï¿½ï¿½ï¿½ï¿½Î´ï¿½ï¿½ï¿½Í£ï¿½
 	 */
 	public int update(int id) {
 		String sql = "";
@@ -219,10 +219,12 @@ public class OrderDao {
 				+ "," + order.getMenusum() + ",'" + order.getTimes() + "',"
 				+ order.getDelivery() + ")";
 		int temp = 0;
+		Boolean temp1; 
+		System.out.println(order.getUserid()+' '+order.getMenuid()+' '+order.getMenusum()+' '+order.getTimes()+' '+order.getDelivery());
 		conn = DBConn.getConn();
 		try {
 			st = conn.createStatement();
-			temp = st.executeUpdate(sql);
+			temp1 = st.execute(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			temp = -1;
@@ -249,7 +251,7 @@ public class OrderDao {
 		return temp;
 	}
 	
-	/* °´ÓÃ»§¶©¹ºÈÕÆÚ²éÑ¯ */
+	/* ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½Ñ¯ */
 	public List<Order> getOrderByDate(int userid,String date) {
 		List<Order> orderlist = new ArrayList<Order>();
 		conn = DBConn.getConn();
@@ -282,7 +284,7 @@ public class OrderDao {
 		return orderlist;
 	}
 
-	/* °´²ËÆ·Ãû³Æ²éÑ¯ */
+	/* ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½Æ²ï¿½Ñ¯ */
 	public List<Order> getOrderByMenuname(int userid,String menuname) {
 		List<Order> orderlist = new ArrayList<Order>();
 		conn = DBConn.getConn();
@@ -315,7 +317,7 @@ public class OrderDao {
 		return orderlist;
 	}
 
-	/* °´ÓÃ»§ID²éÑ¯ */
+	/* ï¿½ï¿½ï¿½Ã»ï¿½IDï¿½ï¿½Ñ¯ */
 	public List<Order> getOrderByDelivery(int userid,int delivery) {
 		List<Order> orderlist = new ArrayList<Order>();
 		conn = DBConn.getConn();
