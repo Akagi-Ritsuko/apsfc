@@ -61,10 +61,10 @@ public class RegServlet extends HttpServlet {
 		int flag=ud.add(user);
 		PrintWriter out = response.getWriter();
 		if (flag == -1) {
-			out.write("<script>alert('对不起,注册未成功!');window.navigate('./qiantai/reg.jsp');</script>");
+			out.write("<script>alert('对不起,注册未成功!');window.location='./qiantai/reg.jsp';</script>");
 		} else {
     		session.setAttribute("user", user);
-			out.write("<script>alert('恭喜您,注册成功!');window.navigate('./qiantai/index.jsp');</script>");
+			out.write("<script>alert('恭喜您,注册成功!');window.location='./qiantai/index.jsp';</script>");
 		}
 	}
 

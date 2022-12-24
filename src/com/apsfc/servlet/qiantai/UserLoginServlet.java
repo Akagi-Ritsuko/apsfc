@@ -64,7 +64,7 @@ public class UserLoginServlet extends HttpServlet {
 			response.sendRedirect("./qiantai/index.jsp");
 		}else{
 			PrintWriter out = response.getWriter();
-			out.write("<script>alert('没有该用户!');window.navigate('./qiantai/login.jsp');</script>");
+			out.write("<script>alert('没有该用户!');window.location='./qiantai/login.jsp';</script>");
 		}	
 	}
 

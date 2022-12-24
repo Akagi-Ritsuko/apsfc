@@ -49,4 +49,14 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>Pay_OrderServlet</display-name>
+    <servlet-name>Pay_OrderServlet</servlet-name>
+    <servlet-class>com.apsfc.servlet.qiantai.Pay_OrderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Pay_OrderServlet</servlet-name>
+    <url-pattern>/Pay_OrderServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

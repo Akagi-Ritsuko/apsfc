@@ -61,10 +61,10 @@ public class UserModifyServlet extends HttpServlet {
 		int flag=ud.update(user);
 		PrintWriter out = response.getWriter();
 		if (flag == -1) {
-			out.write("<script>alert('对不起,修改未成功!');window.navigate('./qiantai/center.jsp');</script>");
+			out.write("<script>alert('对不起,修改未成功!');window.loaction='./qiantai/center.jsp';</script>");
 		} else {
     		session.setAttribute("user", user);
-			out.write("<script>alert('恭喜您,修改成功!');window.navigate('./qiantai/index.jsp');</script>");
+			out.write("<script>alert('恭喜您,修改成功!');window.location='./qiantai/index.jsp';</script>");
 		}
 	}
 

@@ -220,11 +220,11 @@ public class OrderDao {
 				+ order.getDelivery() + ")";
 		int temp = 0;
 		Boolean temp1; 
-		System.out.println(order.getUserid()+' '+order.getMenuid()+' '+order.getMenusum()+' '+order.getTimes()+' '+order.getDelivery());
+		System.out.println(order.getUserid()+"++"+order.getMenuid()+' '+order.getMenusum()+' '+order.getTimes()+' '+order.getDelivery());
 		conn = DBConn.getConn();
 		try {
 			st = conn.createStatement();
-			temp1 = st.execute(sql);
+			temp = st.executeUpdate(sql);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			temp = -1;
