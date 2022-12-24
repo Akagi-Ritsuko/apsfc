@@ -24,11 +24,13 @@ class Pay_OrderServiceImplTest {
 
 	@Test
 	void testGetPayOrderInfo() {
-		List<Pay_Order> orderlist = null;
+		Pay_Order orderlist = new Pay_Order();
 		Pay_OrderServiceImpl pay=new Pay_OrderServiceImpl();
-		String orderNo="1671855258898";
-		orderlist=pay.getPayOrderInfo(orderNo);
-		System.out.println(orderlist.get(0).toString());
+		String orderNo="1671885094578";
+		Pay_Order od=new Pay_Order();
+		od.setOrderNo(orderNo);
+		orderlist=pay.getPayOrderInfo(od.getOrderNo());
+		System.out.println(orderlist.toString());
 	}
 
 	@Test
@@ -37,7 +39,7 @@ class Pay_OrderServiceImplTest {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String date=formatter.format(new Date()); // 将日期时间格式化
 		String payNo=System.currentTimeMillis()+"";
-		String orderNo="1671855258898";
+		String orderNo="1671885094578";
 		System.out.print(payImp.paySuccess(orderNo, payNo, date)); 
 	}
 

@@ -109,8 +109,8 @@ public class Pay_OrderServiceImpl implements Pay_OrderService {
 	}
 
 	@Override
-	public List<Pay_Order> getPayOrderInfo(String orderNo) {
-		List<Pay_Order> orderlist = new ArrayList<Pay_Order>();
+	public Pay_Order getPayOrderInfo(String orderNo) {
+		Pay_Order orderlist =new Pay_Order();
 
 		
 		try {
@@ -130,11 +130,11 @@ public class Pay_OrderServiceImpl implements Pay_OrderService {
 	@Override
 	public boolean paySuccess(String orderNo, String payNo, String payTime)    {
 		try {
-			List<Pay_Order> orderlist=getPayOrderInfo(orderNo);
+			Pay_Order orderlist=getPayOrderInfo(orderNo);
 			if(orderlist==null) {
 				throw new Exception("订单不存在");
 			}
-			if(orderlist.get(0).getStatus() ==1) {
+			if(orderlist.getStatus() ==1) {
 				return true;
 			}
 			

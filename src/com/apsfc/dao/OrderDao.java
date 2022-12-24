@@ -64,7 +64,7 @@ public class OrderDao {
 					pagesize = size;
 				}
 				int start = (currentpage - 1) * size;
-				sql = "select c.id as id,a.id as userid,b.id as menuid,c.id as orderid,realname,phone,address,b.name as menuname,menusum,price1,times,delivery from users a,menus b,orders c where a.id=c.userid and b.id=c.menuid limit "
+				sql = "select c.id as id,a.id as userid,b.id as menuid,c.id as orderid,realname,phone,address,b.name as menuname,menusum,price1,times,delivery,order_no from users a,menus b,orders c where a.id=c.userid and b.id=c.menuid limit "
 						+ start + "," + pagesize;
 				st = conn.createStatement();
 				rs = st.executeQuery(sql);
@@ -82,6 +82,7 @@ public class OrderDao {
 					order.setPrice1(Float.parseFloat(rs.getString("price1")));
 					order.setTimes(rs.getString("times"));
 					order.setDelivery(Integer.parseInt(rs.getString("delivery")));
+					order.setOrder_no(rs.getString("order_no"));
 					orderlist.add(order);
 				}
 			}
@@ -98,7 +99,7 @@ public class OrderDao {
 		List<Order> orderlist = new ArrayList<Order>();
 		conn = DBConn.getConn();
 		try {
-			String sql = "select c.id as id,a.id as userid,b.id as menuid,c.id as orderid,realname,phone,address,b.name as menuname,menusum,price1,times,delivery from users a,menus b,orders c where a.id=c.userid and b.id=c.menuid and c.times like '%"
+			String sql = "select c.id as id,a.id as userid,b.id as menuid,c.id as orderid,realname,phone,address,b.name as menuname,menusum,price1,times,delivery,order_no from users a,menus b,orders c where a.id=c.userid and b.id=c.menuid and c.times like '%"
 					+ date + "%'";
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
@@ -116,6 +117,7 @@ public class OrderDao {
 				order.setPrice1(Float.parseFloat(rs.getString("price1")));
 				order.setTimes(rs.getString("times"));
 				order.setDelivery(Integer.parseInt(rs.getString("delivery")));
+				order.setOrder_no(rs.getString("order_no"));
 				orderlist.add(order);
 			}
 		} catch (SQLException e) {
@@ -131,7 +133,7 @@ public class OrderDao {
 		List<Order> orderlist = new ArrayList<Order>();
 		conn = DBConn.getConn();
 		try {
-			String sql = "select c.id as id,a.id as userid,b.id as menuid,c.id as orderid,realname,phone,address,b.name as menuname,menusum,price1,times,delivery from users a,menus b,orders c where a.id=c.userid and b.id=c.menuid and b.name like '%"
+			String sql = "select c.id as id,a.id as userid,b.id as menuid,c.id as orderid,realname,phone,address,b.name as menuname,menusum,price1,times,delivery,order_no from users a,menus b,orders c where a.id=c.userid and b.id=c.menuid and b.name like '%"
 					+ menuname + "%'";
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
@@ -149,6 +151,7 @@ public class OrderDao {
 				order.setPrice1(Float.parseFloat(rs.getString("price1")));
 				order.setTimes(rs.getString("times"));
 				order.setDelivery(Integer.parseInt(rs.getString("delivery")));
+				order.setOrder_no(rs.getString("order_no"));
 				orderlist.add(order);
 			}
 		} catch (SQLException e) {
@@ -164,7 +167,7 @@ public class OrderDao {
 		List<Order> orderlist = new ArrayList<Order>();
 		conn = DBConn.getConn();
 		try {
-			String sql = "select c.id as id,a.id as userid,b.id as menuid,c.id as orderid,realname,phone,address,b.name as menuname,menusum,price1,times,delivery from users a,menus b,orders c where a.id=c.userid and b.id=c.menuid and c.userid="
+			String sql = "select c.id as id,a.id as userid,b.id as menuid,c.id as orderid,realname,phone,address,b.name as menuname,menusum,price1,times,delivery,order_no from users a,menus b,orders c where a.id=c.userid and b.id=c.menuid and c.userid="
 					+ userid;
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
@@ -182,6 +185,7 @@ public class OrderDao {
 				order.setPrice1(Float.parseFloat(rs.getString("price1")));
 				order.setTimes(rs.getString("times"));
 				order.setDelivery(Integer.parseInt(rs.getString("delivery")));
+				order.setOrder_no(rs.getString("order_no"));
 				orderlist.add(order);
 			}
 		} catch (SQLException e) {
@@ -256,7 +260,7 @@ public class OrderDao {
 		List<Order> orderlist = new ArrayList<Order>();
 		conn = DBConn.getConn();
 		try {
-			String sql = "select c.id as id,a.id as userid,b.id as menuid,c.id as orderid,realname,phone,address,b.name as menuname,menusum,price1,times,delivery from users a,menus b,orders c where a.id=c.userid and b.id=c.menuid and c.times like '%"
+			String sql = "select c.id as id,a.id as userid,b.id as menuid,c.id as orderid,realname,phone,address,b.name as menuname,menusum,price1,times,delivery,order_no from users a,menus b,orders c where a.id=c.userid and b.id=c.menuid and c.times like '%"
 					+ date + "%' and c.userid="+userid;
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
@@ -274,6 +278,7 @@ public class OrderDao {
 				order.setPrice1(Float.parseFloat(rs.getString("price1")));
 				order.setTimes(rs.getString("times"));
 				order.setDelivery(Integer.parseInt(rs.getString("delivery")));
+				order.setOrder_no(rs.getString("order_no"));
 				orderlist.add(order);
 			}
 		} catch (SQLException e) {
@@ -289,7 +294,7 @@ public class OrderDao {
 		List<Order> orderlist = new ArrayList<Order>();
 		conn = DBConn.getConn();
 		try {
-			String sql = "select c.id as id,a.id as userid,b.id as menuid,c.id as orderid,realname,phone,address,b.name as menuname,menusum,price1,times,delivery from users a,menus b,orders c where a.id=c.userid and b.id=c.menuid and b.name like '%"
+			String sql = "select c.id as id,a.id as userid,b.id as menuid,c.id as orderid,realname,phone,address,b.name as menuname,menusum,price1,times,delivery,order_no from users a,menus b,orders c where a.id=c.userid and b.id=c.menuid and b.name like '%"
 					+ menuname +"%' and c.userid="+userid;
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
@@ -307,6 +312,7 @@ public class OrderDao {
 				order.setPrice1(Float.parseFloat(rs.getString("price1")));
 				order.setTimes(rs.getString("times"));
 				order.setDelivery(Integer.parseInt(rs.getString("delivery")));
+				order.setOrder_no(rs.getString("order_no"));
 				orderlist.add(order);
 			}
 		} catch (SQLException e) {
@@ -322,7 +328,7 @@ public class OrderDao {
 		List<Order> orderlist = new ArrayList<Order>();
 		conn = DBConn.getConn();
 		try {
-			String sql = "select c.id as id,a.id as userid,b.id as menuid,c.id as orderid,realname,phone,address,b.name as menuname,menusum,price1,times,delivery from users a,menus b,orders c where a.id=c.userid and b.id=c.menuid and c.userid="
+			String sql = "select c.id as id,a.id as userid,b.id as menuid,c.id as orderid,realname,phone,address,b.name as menuname,menusum,price1,times,delivery,order_no from users a,menus b,orders c where a.id=c.userid and b.id=c.menuid and c.userid="
 					+ userid+" and delivery="+delivery;
 			st = conn.createStatement();
 			rs = st.executeQuery(sql);
@@ -340,6 +346,7 @@ public class OrderDao {
 				order.setPrice1(Float.parseFloat(rs.getString("price1")));
 				order.setTimes(rs.getString("times"));
 				order.setDelivery(Integer.parseInt(rs.getString("delivery")));
+				order.setOrder_no(rs.getString("order_no"));
 				orderlist.add(order);
 			}
 		} catch (SQLException e) {

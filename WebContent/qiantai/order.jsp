@@ -1,5 +1,10 @@
 <%@page import="com.apsfc.po.Order"%>
+<%@page import="com.apsfc.entity.Pay_Order"%>
+<%@page import="com.apsfc.servlet.qiantai.order.Pay_OrderServiceImpl"%>
 <%@ page language="java" import="java.util.*,java.text.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -95,14 +100,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<td class="line_table" align="center" ><span class="left_bt2">合计(元)</span></td>
 						<td class="line_table" align="center" ><span class="left_bt2">订购时间</span></td>
 						<td class="line_table" align="center" ><span class="left_bt2">是否派送</span></td>
+						<td class="line_table" align="center" ><span class="left_bt2">支付</span></td>
+						<td class="line_table" align="center" ><span class="left_bt2">支付时间</span></td>
+						<td class="line_table" align="center" ><span class="left_bt2">支付流水号</span></td>
+						
+					
+						
 					</tr>
 						<%
 							List<Order> list = (List<Order>) session
 									.getAttribute("userorder");
+					
 							if (list != null) {
 								for (int i = 0; i < list.size(); i++) {
 									Order order = list.get(i);
 									String str = "";
+									Pay_OrderServiceImpl pImp=new Pay_OrderServiceImpl();
+									Pay_Order payOrder=new Pay_Order();
+									payOrder=pImp.getPayOrderInfo(order.getOrder_no());
+									System.out.println(payOrder.getStatus());
+									String strPay="";
+									Integer payStatic=payOrder.getStatus();
+									String payDate=payOrder.getPayTime();
+									String payNo=payOrder.getPayno();
+									if(payDate==null){
+										payDate="该笔订单还未支付！";
+									}
+									if(payNo==null){
+										payNo="该笔订单还未支付！";
+									}
 									if (order.getDelivery() == 1) {
 										str = "是";
 									} else {
@@ -117,7 +143,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			           <td class="line_table" align="center" ><span class="left_txt"><%=order.getPrice1() %></span></td>
 			           <td class="line_table" align="center" ><span class="left_txt"><%=order.getMenusum()*order.getPrice1() %></span></td>
 			           <td class="line_table" align="center" ><span class="left_txt"><%=order.getTimes() %></span></td> 
-	                   <td class="line_table" align="center" ><span class="left_txt"><%=str %></span></td> </tr>
+	                   <td class="line_table" align="center" ><span class="left_txt"><%=str %></span></td> 
+	                   	<%
+	                             
+	                             if(payStatic==1){
+	                	            strPay="已支付";
+	                            %>
+								<td class="line_table" align="center"><span
+									class="left_txt"><%=strPay%></span></td>
+
+								<%
+							     }else{
+	                	          strPay="点击支付";
+	                            %>
+								<td class="line_table" align="center"><a
+									href="pay.jsp?orderNo=<%=payOrder.getOrderNo() %>&reqtype=delivery" style="color:red"><%=strPay %></a></td>
+								<%} %>
+								<td class="line_table" align="center" ><span class="left_txt"><%=payDate %></span></td> 
+								<td class="line_table" align="center" ><span class="left_txt"><%=payNo %></span></td> 
+	                   </tr>
 					   <%
 					   	}
 					   		session.removeAttribute("userorder");

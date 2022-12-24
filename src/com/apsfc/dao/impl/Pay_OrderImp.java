@@ -48,8 +48,8 @@ public class Pay_OrderImp  {
 		return temp;
 	}
 
-	public List<Pay_Order> getPayOrderByNo(String orderNo){
-		List<Pay_Order> orderlist = new ArrayList<Pay_Order>();
+	public Pay_Order getPayOrderByNo(String orderNo){
+		Pay_Order orderlist =new Pay_Order();
 		conn = DBConn.getConn();
 		try {
 			String sql = "select * from pay_order where order_no='"+orderNo+"'";
@@ -65,7 +65,8 @@ public class Pay_OrderImp  {
 				order.setPayTime(rs.getString("pay_time"));
 				order.setBody(rs.getString("body"));
 				order.setStatus(Integer.parseInt(rs.getString("status")));
-				orderlist.add(order);
+				orderlist=order;
+//				orderlist.add(order);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -1,5 +1,7 @@
 <%@page import="com.apsfc.po.Order"%>
 <%@page import="com.apsfc.dao.OrderDao"%>
+<%@page import="com.apsfc.entity.Pay_Order"%>
+<%@page import="com.apsfc.servlet.qiantai.order.Pay_OrderServiceImpl"%>
 <%@page import="java.util.*"%>
 <%@ page language="java" pageEncoding="utf-8"%>
 <html>
@@ -62,6 +64,8 @@
 									class="left_bt2">是否派送</span></td>
 								<td class="line_table" align="center" colspan="2"><span
 									class="left_bt2">确认订单</span></td>
+								<td class="line_table" align="center" ><span
+									class="left_bt2">是否支付</span></td>
 
 							</tr>
 						
@@ -75,6 +79,12 @@
 							    List<Order> list=od.pageList(currentpage,5);
 							    for(int i=0;i<list.size();i++){
 									Order order=list.get(i); 
+									Pay_Order payOrder=new Pay_Order();
+									Pay_OrderServiceImpl pImp=new Pay_OrderServiceImpl();
+									payOrder=pImp.getPayOrderInfo(order.getOrder_no());
+									System.out.println(payOrder.getStatus());
+									String strPay="";
+									Integer payStatic=payOrder.getStatus();
 							%>
                              <tr>
 								<td class="line_table" align="center"><span
@@ -115,6 +125,19 @@
 									href="../OrderServlet?id=<%=order.getId() %>&reqtype=delivery">确认</a></td>
 								<td class="line_table" align="center"><a
 									href="../OrderServlet?id=<%=order.getId()%>&reqtype=del">取消</a></td>
+								<%} %>
+								<%if(payStatic==1){
+	                	            strPay="已支付";
+	                            %>
+								<td class="line_table" align="center"><span
+									class="left_txt"><%=strPay%></span></td>
+
+								<%
+							     }else{
+	                	          strPay="未支付";
+	                            %>
+								<td class="line_table" align="center"><span
+									class="left_txt" style="color:red'"><%=strPay%></span></td>
 								<%} %>
 							</tr>
 							<%} %>

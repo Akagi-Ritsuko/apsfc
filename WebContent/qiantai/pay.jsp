@@ -1,4 +1,6 @@
 <%@ page language="java" import="java.util.*,java.text.*" pageEncoding="gb2312"%>
+<%@page import="com.apsfc.entity.Pay_Order"%>
+<%@page import="com.apsfc.servlet.qiantai.order.Pay_OrderServiceImpl"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -32,8 +34,14 @@ $(function() {
   
   <body>
 <div class="divContent">
-	<span class="spanPrice">支付金额：</span><span class="price_t">&yen;203.5</span>
-	<span class="spanOid">编号：E3A1EB6D0543489F9729B2B5BC5DB365</span>
+	<%
+	String orderNo= (String) request.getParameter("orderNo");
+	Pay_Order order=new Pay_Order();
+	Pay_OrderServiceImpl pImp=new Pay_OrderServiceImpl();
+	order=pImp.getPayOrderInfo(orderNo);
+	%>
+	<span class="spanPrice"></span>金额<span class="price_t">&yen;<%=order.getMoney() %></span>
+	<span class="spanOid">订单号<%=order.getOrderNo() %></span>
 </div>
 <form action="<c:url value='/OrderServlet'/>" method="post" id="form1" target="_top">
 <input type="hidden" name="method" value=""/>
@@ -121,7 +129,7 @@ $(function() {
 	  </div>
 	</div>
 	<div style="margin: 40px;">
-		<a href="javascript:alert('支付成功！');" class="linkNext">下一步</a>
+		<a href="../Pay_OrderServlet?orderNo=<%=order.getOrderNo()%>" >确认支付</a>
 	</div>
 </div>
 </form>
