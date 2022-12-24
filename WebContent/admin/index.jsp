@@ -61,8 +61,7 @@ body {
 												<td height="149">&nbsp;</td>
 											</tr>
 											<tr>
-												<td height="80" align="right" valign="top"><img
-													src="images/logo4.png" width="279" height="68"></td>
+												<td height="80" align="right" valign="top"></td>
 											</tr>
 											<tr>
 												<td height="198" align="right" valign="top"><table
@@ -79,7 +78,7 @@ body {
 															<td height="25" colspan="2" class="left_txt"
 																align="center"><p>
 																	<img src="images/666.png" width="17" height="14">
-																	官方网站：http://www.haut.edu.cn/
+																	官方网站：https://www.cugb.edu.cn/
 																</p></td>
 														</tr>
 														<tr>

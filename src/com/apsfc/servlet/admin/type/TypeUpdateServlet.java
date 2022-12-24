@@ -48,9 +48,9 @@ public class TypeUpdateServlet extends HttpServlet {
 		type.setName(name);
 		int flag = tdao.update(type);
 		if (flag == -1) {
-			out.write("<script>alert('¶Ô²»Æð,ÐÞ¸ÄÎ´³É¹¦!');window.navigate('./admin/type.jsp');</script>");
+			out.write("<script>alert('ï¿½Ô²ï¿½ï¿½ï¿½,ï¿½Þ¸ï¿½Î´ï¿½É¹ï¿½!');window.navigate('./admin/type.jsp');</script>");
 		} else {
-			out.write("<script>alert('¹§Ï²Äú,ÐÞ¸Ä³É¹¦!');window.navigate('./admin/type.jsp');</script>");
+			out.write("<script>alert('ï¿½ï¿½Ï²ï¿½ï¿½,ï¿½Þ¸Ä³É¹ï¿½!');window.navigate('./admin/type.jsp');</script>");
 		}
 	}
 

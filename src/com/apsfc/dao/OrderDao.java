@@ -224,7 +224,7 @@ public class OrderDao {
 				+ order.getDelivery() + ",'"+order.getOrder_no()+"'"+")";
 		int temp = 0;
 		Boolean temp1; 
-		System.out.println(order.getUserid()+"++"+order.getMenuid()+' '+order.getMenusum()+' '+order.getTimes()+' '+order.getDelivery());
+//		System.out.println(order.getUserid()+"++"+order.getMenuid()+' '+order.getMenusum()+' '+order.getTimes()+' '+order.getDelivery());
 		conn = DBConn.getConn();
 		try {
 			st = conn.createStatement();

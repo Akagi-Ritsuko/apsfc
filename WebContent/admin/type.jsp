@@ -63,7 +63,7 @@
 								<td class="line_table" align="center" width="20%"><a
 									href="type_update.jsp?id=<%=type.getId()%>" target="main">修改</a></td>
 								<td class="line_table" align="center" width="20%"><a
-									href="../servlet/TypeDelServlet?id=<%=type.getId()%>" target="main">删除</a></td>
+									href="../TypeDelServlet?id=<%=type.getId()%>" target="main">删除</a></td>
 							</tr>
 							<%
 								}

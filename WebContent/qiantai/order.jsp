@@ -123,12 +123,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									Integer payStatic=payOrder.getStatus();
 									String payDate=payOrder.getPayTime();
 									String payNo=payOrder.getPayno();
+									
 									if(payDate==null){
 										payDate="该笔订单还未支付！";
 									}
 									if(payNo==null){
 										payNo="该笔订单还未支付！";
 									}
+									
 									if (order.getDelivery() == 1) {
 										str = "是";
 									} else {
@@ -155,6 +157,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<%
 							     }else{
 	                	          strPay="点击支付";
+	                	          payDate="该笔订单还未支付！";
+	                	          payNo="该笔订单还未支付！";
 	                            %>
 								<td class="line_table" align="center"><a
 									href="pay.jsp?orderNo=<%=payOrder.getOrderNo() %>&reqtype=delivery" style="color:red"><%=strPay %></a></td>

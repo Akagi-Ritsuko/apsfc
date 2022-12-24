@@ -206,9 +206,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</td>
 					<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0" height="25" align="left">
 						<!-- <input class="input7" type="text" name="address"/> -->
-						<input id="keyword" name="address"  class="input7" value="郑州市高新区"  
-            onfocus='if(this.value=="郑州市高新区"){this.value="郑州市高新区"+"";}; '   
-            onblur='if(this.value==""){this.value="郑州市高新区";};'>  
+						<input id="keyword" name="address"  class="input7" value="北京市海淀区cugb"  
+            onfocus='if(this.value=="北京市海淀区cugb"){this.value="北京市海淀区cugb"+"";}; '   
+            onblur='if(this.value==""){this.value="北京市海淀区cugb";};'>  
 						
 					</td>
 					<td bordercolorlight="#C0C0C0" bordercolordark="#C0C0C0" height="25" align="left">

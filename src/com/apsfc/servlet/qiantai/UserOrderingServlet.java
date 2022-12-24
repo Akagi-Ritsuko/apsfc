@@ -58,9 +58,10 @@ public class UserOrderingServlet extends HttpServlet {
 			if (list != null) {
 				for (int i = 0; i < list.size(); i++) {
 					ShoppingCart sc = list.get(i);
-					System.out.println(sc.getSums());
+//					System.out.println(sc.getSums());
 					Order od=new Order();
 					String ordNo=System.currentTimeMillis()+"";
+//					System.out.println(user.getId());
 					od.setUserid(user.getId());
 					od.setMenuid(sc.getId());
 					od.setPrice1(sc.getPrice());
@@ -68,7 +69,7 @@ public class UserOrderingServlet extends HttpServlet {
 				    od.setTimes(date);
 				    od.setDelivery(0);
 				    od.setOrder_no(ordNo);
-				    System.out.println(od.getTimes());
+//				    System.out.println(od.getTimes());
 				    odao.add(od);
 				    Pay_Order pOd=new Pay_Order();
 				    pOd.setBody(String.valueOf(sc.getId()));

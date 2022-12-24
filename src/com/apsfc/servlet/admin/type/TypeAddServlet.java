@@ -43,6 +43,7 @@ public class TypeAddServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
+		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 		String name = request.getParameter("name");
 		TypeDao tdao=new TypeDao();

@@ -124,7 +124,7 @@
             <div class="pdv_border" style="margin:0;padding:0;height:100%;border:0px  solid;background:;">
               
               <div style="padding:0px"> 
-              <img src="images/1257477260.png" alt="" width="100%" border="0"  /> 
+              <img src="images/1257477260.gif" alt="" width="100%" border="0"  /> 
               </div>
             
               
