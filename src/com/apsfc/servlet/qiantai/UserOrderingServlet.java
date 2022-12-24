@@ -78,7 +78,7 @@ public class UserOrderingServlet extends HttpServlet {
 				    
 				}
 				session.removeAttribute("shoppingcar");
-				out.write("<script>alert('订单已提交,请完成支付!');window.location='./qiantai/pay.jsp';</script>");
+				out.write("<script>alert('订单已提交,请前往我的订单界面完成支付!');window.location='./qiantai/order.jsp';</script>");
 				return;
 			}else{
 				out.write("<script>alert('您的餐车是空的哦!快快去选购吧！');window.location='./qiantai/index.jsp';</script>");
