@@ -214,10 +214,10 @@ public class OrderDao {
 
 	public int add(Order order) {
 		String sql = "";
-		sql = "insert into orders(userid,menuid,menusum,times,delivery)"
+		sql = "insert into orders(userid,menuid,menusum,times,delivery,order_no)"
 				+ " values(" + order.getUserid() + "," + order.getMenuid()
 				+ "," + order.getMenusum() + ",'" + order.getTimes() + "',"
-				+ order.getDelivery() + ")";
+				+ order.getDelivery() + ",'"+order.getOrder_no()+"'"+")";
 		int temp = 0;
 		Boolean temp1; 
 		System.out.println(order.getUserid()+"++"+order.getMenuid()+' '+order.getMenusum()+' '+order.getTimes()+' '+order.getDelivery());

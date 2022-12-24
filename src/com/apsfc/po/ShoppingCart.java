@@ -5,6 +5,7 @@ public class ShoppingCart {
 	private String name;
 	private float price;
 	private int sums;
+	private String orderNo;
 	
 	public int getId() {
 		return id;
@@ -29,6 +30,12 @@ public class ShoppingCart {
 	}
 	public void setSums(int sums) {
 		this.sums = sums;
+	}
+	public String getOrderNo() {
+		return orderNo;
+	}
+	public void setOrderNo(String orderNo) {
+		this.orderNo = orderNo;
 	}
 	
 

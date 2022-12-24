@@ -8,7 +8,7 @@ import com.apsfc.entity.Pay_Order;
 
 public interface Pay_OrderService  {
 //	保存订单
-	public ArrayList<Pay_Order> add(String body, String money);
+	public ArrayList<Pay_Order> add(Pay_Order order);
 //	根据订单号查询订单
 	public List<Pay_Order> getPayOrderInfo(String orderNo);
 //	订单支付成功

@@ -11,10 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.apsfc.dao.OrderDao;
+import com.apsfc.entity.Pay_Order;
 import com.apsfc.po.Order;
 import com.apsfc.po.ShoppingCart;
 import com.apsfc.po.User;
-
+import com.apsfc.servlet.qiantai.order.Pay_OrderServiceImpl;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -53,22 +54,31 @@ public class UserOrderingServlet extends HttpServlet {
 			String date=formatter.format(new Date()); // 将日期时间格式化
 			List<ShoppingCart> list = (List<ShoppingCart>)session.getAttribute("shoppingcar");
 			OrderDao odao=new OrderDao();
+			Pay_OrderServiceImpl pdao=new Pay_OrderServiceImpl();
 			if (list != null) {
 				for (int i = 0; i < list.size(); i++) {
 					ShoppingCart sc = list.get(i);
 					System.out.println(sc.getSums());
 					Order od=new Order();
+					String ordNo=System.currentTimeMillis()+"";
 					od.setUserid(user.getId());
 					od.setMenuid(sc.getId());
 					od.setPrice1(sc.getPrice());
 				    od.setMenusum(sc.getSums());
 				    od.setTimes(date);
 				    od.setDelivery(0);
+				    od.setOrder_no(ordNo);
 				    System.out.println(od.getTimes());
 				    odao.add(od);
+				    Pay_Order pOd=new Pay_Order();
+				    pOd.setBody(String.valueOf(sc.getId()));
+				    pOd.setMoney(String.valueOf(sc.getPrice()));
+				    pOd.setOrderNo(ordNo);
+				    pdao.add(pOd);
+				    
 				}
 				session.removeAttribute("shoppingcar");
-				out.write("<script>alert('订单已提交,稍后将有客服给予确认并派送!');window.location='./qiantai/index.jsp';</script>");
+				out.write("<script>alert('订单已提交,请完成支付!');window.location='./qiantai/pay.jsp';</script>");
 				return;
 			}else{
 				out.write("<script>alert('您的餐车是空的哦!快快去选购吧！');window.location='./qiantai/index.jsp';</script>");
@@ -86,4 +96,5 @@ public class UserOrderingServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 	}
 
+	
 }

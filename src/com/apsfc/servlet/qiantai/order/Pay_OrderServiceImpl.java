@@ -93,11 +93,11 @@ public class Pay_OrderServiceImpl implements Pay_OrderService {
 	
 	//原始
 	@Override
-	public ArrayList<Pay_Order> add(String body, String money) {
-		Pay_Order order=new Pay_Order();
-		order.setOrderNo(System.currentTimeMillis()+"");
-		order.setBody(body);
-		order.setMoney(money);
+	public ArrayList<Pay_Order> add(Pay_Order order) {
+//		Pay_Order order=new Pay_Order();
+//		order.setOrderNo(odNo);
+//		order.setBody(body);
+//		order.setMoney(money);
 		order.setStatus(0);
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String date=formatter.format(new Date()); // 将日期时间格式化

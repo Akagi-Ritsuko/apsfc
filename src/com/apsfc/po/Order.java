@@ -13,6 +13,7 @@ public class Order {
 	private float price1;
 	private String times;
 	private int delivery;
+	private String order_no;
 	
 	public int getId() {
 		return id;
@@ -85,6 +86,12 @@ public class Order {
 	}
 	public void setDelivery(int delivery) {
 		this.delivery = delivery;
+	}
+	public String getOrder_no() {
+		return order_no;
+	}
+	public void setOrder_no(String order_no) {
+		this.order_no = order_no;
 	}
 	
 	

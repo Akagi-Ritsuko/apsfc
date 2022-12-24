@@ -20,14 +20,7 @@ class Pay_OrderServiceImplTest {
 	void setUp() throws Exception {
 	}
 
-	@Test
-	void testAdd() {
-		Pay_OrderServiceImpl payImp=new Pay_OrderServiceImpl();
-		String body=new String("红烧排骨");
-		String money=new String ("88");
-		ArrayList<Pay_Order> order=payImp.add(body, money);
-//		System.out.println(order.toString());
-	}
+
 
 	@Test
 	void testGetPayOrderInfo() {
